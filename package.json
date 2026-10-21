@@ -1,0 +1,34 @@
+{
+  "name": "bookshelf-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "start-dev": "nodemon src/server.js",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abikayusri/bookshelf-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Abikayusri/bookshelf-api/issues"
+  },
+  "homepage": "https://github.com/Abikayusri/bookshelf-api#readme",
+  "dependencies": {
+    "express": "^5.3.0",
+    "nanoid": "^6.0.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.13.0",
+    "eslint-config-dicodingacademy": "^0.9.5",
+    "globals": "^17.13.0",
+    "nodemon": "^3.1.14"
+  }
+}
