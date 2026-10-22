@@ -66,16 +66,30 @@ export const addBookHandler = (req, res) => {
 };
 
 export const getAllBooksHandler = (req, res) => {
-  const result = books.map(({ id, name, publisher }) => ({
-    id,
-    name,
-    publisher,
-  }));
+  const { name, reading, finished } = req.query;
+  let result = books;
+
+  if (name) {
+    const keyword = String(name).toLowerCase();
+    result = result.filter((book) => book.name.toLowerCase().includes(keyword));
+  }
+
+  if (reading === '0' || reading === '1') {
+    result = result.filter((book) => book.reading === (reading === '1'));
+  }
+
+  if (finished === '0' || finished === '1') {
+    result = result.filter((book) => book.finished === (finished === '1'));
+  }
 
   return res.json({
     status: 'success',
     data: {
-      books: result,
+      books: result.map((book) => ({
+        id: book.id,
+        name: book.name,
+        publisher: book.publisher,
+      })),
     },
   });
 };
@@ -165,6 +179,6 @@ export const deleteBookByIdHandler = (req, res) => {
 
   return res.json({
     status: 'success',
-    message: 'Buku berhasil dihappus',
+    message: 'Buku berhasil dihapus',
   });
 };
